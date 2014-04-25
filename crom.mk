@@ -1,23 +1,16 @@
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/cdma.mk)
+$(call inherit-product, vendor/crom/config/common_cdma.mk)
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
-
-# Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+# Inherit some common C-RoM stuff.
+$(call inherit-product, vendor/crom/config/common_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/lge/vs980/vs980.mk)
 
-## Device identifier. This must come after all inclusions
+# products
 PRODUCT_DEVICE := vs980
-PRODUCT_NAME := cm_vs980
 PRODUCT_BRAND := LGE
+PRODUCT_NAME := crom_vs980
 PRODUCT_MODEL := LG-VS980
 PRODUCT_MANUFACTURER := lge
 
@@ -28,3 +21,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_GMS_CLIENTID_BASE := android-verizon
 
 PRODUCT_PACKAGES += Torch
+
+# bootanimation
+PRODUCT_COPY_FILES += \
+    vendor/crom/prebuilt/common/media/xxhdpi/BOOTANIMATION-1080x1920.zip:system/media/bootanimation.zip
